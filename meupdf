@@ -1,3 +1,5 @@
+<!--APARECER DEPOIS DE X SEGUNDOS -->
+<script>
 function exibe(){
 			document.getElementById(&#39;download&#39;).style.display=&#39;block&#39;;
 		}
@@ -5,3 +7,40 @@ function exibe(){
 		window.onload = function(){
 			setTimeout(&quot;exibe()&quot;, 5000);
 		}
+	</script>	
+		
+		
+		
+		<!--POSTS POR MARCADOR GRANDE -->
+<div class="widget-content">
+<script>
+function bsrpGallery(root) {
+var entries = root.feed.entry || [];
+var html = ['<div class="bsrp-gallery nopin" title="">'];
+for (var i = 0; i < entries.length; ++i) {
+var post = entries[i];
+var postTitle = post.title.$t;
+var orgImgUrl = post.media$thumbnail ? post.media$thumbnail.url : 'http://2.bp.blogspot.com/-OSlo4lj_H4w/VRMrRXuZWyI/AAAAAAABCNA/RQsmcuaWiEE/s1600/sem.gif';
+var newImgUrl = orgImgUrl.replace('s72-c', 's' + bsrpg_largura + '-c' + bsrpg_altura);
+var links = post.link || [];
+for (var j = 0; j < links.length; ++j) {
+if (links[j].rel == 'alternate') break;
+}
+var postUrl = links[j].href;
+var imgTag = '<img src="' + newImgUrl + '" width="' + bsrpg_largura + '" height="' + bsrpg_altura + '"/>';
+var pTitle = bsrpg_showTitle ? '<h2 id="ptitle">' + postTitle + '</h2>' : '';
+var item = '<a href="' + postUrl + '" title="' + postTitle + '">' + imgTag + pTitle + '</a>';
+html.push('<div class="bs-item">', item, '</div>');
+}
+html.push('</div>');
+document.write(html.join(""));
+}
+hoje = new Date()
+numposts = 1;  /*--define em qual post começa a exibição --*/
+var bsrpg_largura = 250;  /*--define o tamanho das miniaturas --*/
+var bsrpg_altura = 120;
+var bsrpg_showTitle = true;
+document.write("<script src=\"https://www.meupdf.com/feeds/posts/default/-/filosofia?start-index="+numposts+"&max-results=8&orderby=published&alt=json-in-script&callback=bsrpGallery\"><\/script>");</script>
+</div>
+<div class="clear"></div>
+<!--POSTS POR MARCADOR GRANDE -->
