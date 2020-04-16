@@ -1,0 +1,7 @@
+function exibe(){
+			document.getElementById(&#39;download&#39;).style.display=&#39;block&#39;;
+		}
+		
+		window.onload = function(){
+			setTimeout(&quot;exibe()&quot;, 5000);
+		}
